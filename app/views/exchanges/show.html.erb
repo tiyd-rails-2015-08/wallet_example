@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Withdrawal:</strong>
+  <%= @exchange.withdrawal %>
+</p>
+
+<p>
+  <strong>Deposit:</strong>
+  <%= @exchange.deposit %>
+</p>
+
+<p>
+  <strong>Collecter:</strong>
+  <%= @exchange.collecter %>
+</p>
+
+<%= link_to 'Edit', edit_exchange_path(@exchange) %> |
+<%= link_to 'Back', exchanges_path %>

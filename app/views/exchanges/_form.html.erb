@@ -1,0 +1,37 @@
+<%= form_for(@exchange) do |f| %>
+  <% if @exchange.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exchange.errors.count, "error") %> prohibited this exchange from being saved:</h2>
+
+      <ul>
+      <% @exchange.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <input type="radio" name="yesno" value=1></input>
+    <%= f.label :withdrawal %><br>
+    <!-- <%= f.text_field :withdrawal %> -->
+  </div>
+  <div class="field">
+
+    <input type="radio" name="yesno" value=1></input>
+    <%= f.label :deposit %><br>
+    <!-- <%= f.text_field :deposit %> -->
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :collecter %><br>
+    <%= f.text_field :collecter %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -34,7 +34,13 @@ class Exchange < ActiveRecord::Base
     # least_collector
 
     # SQL-heavy
-    self.where("amount < 0").group("collector").order("sum(amount)").select("collector").first.collector
+    result = self.where("amount < 0").group("collector").order("sum(amount)").select("collector").first
+
+    if result
+      result.collector
+    else
+      "(None)"
+    end
   end
 
   def self.total_money

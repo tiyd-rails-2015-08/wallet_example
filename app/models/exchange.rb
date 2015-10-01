@@ -1,32 +1,42 @@
 require 'byebug'
 
 class Exchange < ActiveRecord::Base
- validates :amount, :collecter, presence: true
+  validates :amount, :collector, presence: true
+
+  def self.count_this_month
+    self.where("created_at BETWEEN ? AND ?",
+        Time.now.beginning_of_month, Time.now.end_of_month).count
+  end
+
   def self.trans_count
     self.count
   end
 
   def self.biggest_expense
-    @big = []
-    self.all.each do |x|
-      @big << x.amount
-    end
-    @big.min
+    self.all.map { |x| x.amount }.min
   end
 
   def self.expensive_company
-    bigger = []
-    self.all.each do |x|
-      bigger << x.amount.to_s
-    end
+    # # RUBY
+    # debits = self.all.select {|e| e.amount < 0}
+    #
+    # collectors = Hash.new(0)
+    # debits.each do |d|
+    #   collectors[d.collector] += d.amount
+    # end
+    #
+    # least_collector = nil
+    # least_amount = 0
+    # collectors.each do |k, v|
+    #   if v < least_amount
+    #     least_amount = v
+    #     least_collector = k
+    #   end
+    # end
+    # least_collector
 
-    @h3 = Hash[bigger.map {|amount, collecter| [amount, collecter]}]
-    # companies = Hash[bigger.each { |x| [amount, collecter] }]
-    # comapnies = companies.sort
-
-    # Exchange.select("collecter(:id) as ordered_date, sum(amount) as total_amount").group("collecter(:id)")
-    # Client.sum("orders_count")
-
+    # SQL-heavy
+    self.where("amount < 0").group("collector").order("sum(amount)").first.collector
   end
 
   def self.total_money

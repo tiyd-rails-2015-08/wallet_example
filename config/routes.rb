@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/show'
-
-  get 'dashboard/index'
-
   root 'exchanges#dashboard'
 
   resources :exchanges

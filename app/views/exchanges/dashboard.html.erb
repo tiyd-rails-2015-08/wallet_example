@@ -2,13 +2,8 @@
 
 <h1>Welcome to your dashboard!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
 
-<br>
-<%if @total_money < 0 %>
-<p><h1>YOU BROKE</h1></p>
-<%else%>
-<p> You have, <%= @total_money %> moneys </p>
-<p> You have made, <%= @trans_count %> transactions </p>
-<%end%>
+<%= render "statistics" %>
+
 <%= link_to 'Index', exchanges_path %>
 <br>
 <%= link_to 'Create new transaction!', new_exchange_path %>

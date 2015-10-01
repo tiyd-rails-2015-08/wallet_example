@@ -1,24 +1,15 @@
 class ExchangesController < ApplicationController
   before_action :set_exchange, only: [ :show, :edit, :update, :destroy]
+  before_action :set_statistics, only: [:index, :dashboard]
 
 
 
 
   # GET /exchanges
   def index
-    @exchanges = Exchange.all
-    @trans_count = Exchange.trans_count
-    @total_money = Exchange.total_money
-    @broke = Exchange.broke
-    @maxamount = Exchange.biggest_expense
-    @expensive_company = Exchange.expensive_company
   end
 
   def dashboard
-    @exchanges = Exchange.all
-    @trans_count = Exchange.trans_count
-    @total_money = Exchange.total_money
-    @broke = Exchange.broke
   end
 
   # GET /exchanges/1
@@ -39,7 +30,7 @@ class ExchangesController < ApplicationController
     @exchange = Exchange.new(exchange_params)
 
     if @exchange.save
-      redirect_to @exchange, notice: 'Exchange was successfully created.'
+      redirect_to root_path, notice: 'Exchange was successfully created.'
     else
       render :new
     end
@@ -66,8 +57,17 @@ class ExchangesController < ApplicationController
       @exchange = Exchange.find(params[:id])
     end
 
+    def set_statistics
+      @exchanges = Exchange.all
+      @trans_count = Exchange.trans_count
+      @total_money = Exchange.total_money
+      @broke = Exchange.broke
+      @maxamount = Exchange.biggest_expense
+      @expensive_company = Exchange.expensive_company
+    end
+
     # Only allow a trusted parameter "white list" through.
     def exchange_params
-      params.require(:exchange).permit(:withdrawal, :deposit, :collecter, :amount)
+      params.require(:exchange).permit(:withdrawal, :deposit, :collector, :amount)
     end
 end

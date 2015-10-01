@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930212021) do
+ActiveRecord::Schema.define(version: 20151001145927) do
 
   create_table "exchanges", force: :cascade do |t|
     t.decimal  "withdrawal"
     t.decimal  "deposit"
-    t.string   "collecter"
+    t.string   "collector"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal  "amount"

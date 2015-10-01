@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  withdrawal: 9.99
-  deposit: 9.99
-  collecter: MyString
+last_month:
+  amount: -100
+  collector: TSwift
+  created_at: <%= Time.now - 1.month %>
 
-two:
-  withdrawal: 9.99
-  deposit: 9.99
-  collecter: MyString
+this_month:
+  amount: -50
+  collector: JDavid
+  created_at: <%= Time.now %>
+
+more_this_month:
+  amount: 150
+  collector: DKim
+  created_at: <%= Time.now %>

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ExchangesControllerTest < ActionController::TestCase
   setup do
-    @exchange = exchanges(:one)
+    @exchange = exchanges(:last_month)
   end
 
   test "should get index" do
@@ -18,10 +18,10 @@ class ExchangesControllerTest < ActionController::TestCase
 
   test "should create exchange" do
     assert_difference('Exchange.count') do
-      post :create, exchange: { collecter: @exchange.collecter, deposit: @exchange.deposit, withdrawal: @exchange.withdrawal }
+      post :create, exchange: { collector: @exchange.collector, amount: @exchange.amount }
     end
 
-    assert_redirected_to exchange_path(assigns(:exchange))
+    assert_redirected_to root_path
   end
 
   test "should show exchange" do
@@ -35,7 +35,7 @@ class ExchangesControllerTest < ActionController::TestCase
   end
 
   test "should update exchange" do
-    patch :update, id: @exchange, exchange: { collecter: @exchange.collecter, deposit: @exchange.deposit, withdrawal: @exchange.withdrawal }
+    patch :update, id: @exchange, exchange: { collector: @exchange.collector, deposit: @exchange.deposit, withdrawal: @exchange.withdrawal }
     assert_redirected_to exchange_path(assigns(:exchange))
   end
 

@@ -1,5 +1,3 @@
-require 'byebug'
-
 class Exchange < ActiveRecord::Base
   validates :amount, :collector, presence: true
 

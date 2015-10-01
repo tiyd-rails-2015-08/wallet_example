@@ -10,6 +10,8 @@ class ExchangesController < ApplicationController
     @trans_count = Exchange.trans_count
     @total_money = Exchange.total_money
     @broke = Exchange.broke
+    @maxamount = Exchange.biggest_expense
+    @expensive_company = Exchange.expensive_company
   end
 
   def dashboard

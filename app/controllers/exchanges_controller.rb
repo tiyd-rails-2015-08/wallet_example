@@ -1,9 +1,21 @@
 class ExchangesController < ApplicationController
-  before_action :set_exchange, only: [:amount, :show, :edit, :update, :destroy]
+  before_action :set_exchange, only: [ :show, :edit, :update, :destroy]
+
+
+
 
   # GET /exchanges
   def index
     @exchanges = Exchange.all
+    @trans_count = Exchange.trans_count
+    @total_money = Exchange.total_money
+
+  end
+
+  def dashboard
+    @exchanges = Exchange.all
+    @trans_count = Exchange.trans_count
+    @total_money = Exchange.total_money
   end
 
   # GET /exchanges/1

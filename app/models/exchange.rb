@@ -1,14 +1,15 @@
+require 'byebug'
+
 class Exchange < ActiveRecord::Base
-  def self.money
-    @total_money = 100.0
+
+  def self.trans_count
+    self.count
   end
 
-  def type
-    # if deposit.params[]
-    #   @deposit =
-  end
 
   def self.total_money
-    @total_money = deposit - withdrawal
+     self.all.inject(0) { |sum, number| sum + number.amount.to_f }
   end
+
+
 end

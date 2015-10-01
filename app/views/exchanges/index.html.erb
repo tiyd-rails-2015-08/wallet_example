@@ -25,5 +25,6 @@
 </table>
 
 <br>
-<p> All your moneys; <%= Exchange.money %> </p>
+<p> You have, <%= @total_money %> moneys </p>
+<p> You have made, <%= @trans_count %> transactions </p>
 <%= link_to 'New Exchange', new_exchange_path %>

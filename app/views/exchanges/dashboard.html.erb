@@ -3,7 +3,8 @@
 <h1>Welcome to your dashboard!!!!!!!!!!!!!!!!!!!!!!!!!!</h1>
 
 <br>
-<p> All your moneys; <%= Exchange.money %> </p>
+<p> All your moneys; <%= @total_money %></p>
+<p> over <%= @trans_count =%> transactions</p>
 <%= link_to 'Index', exchanges_path %>
 <br>
 <%= link_to 'Create new transaction!', new_exchange_path %>

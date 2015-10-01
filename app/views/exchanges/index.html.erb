@@ -25,6 +25,16 @@
 </table>
 
 <br>
+
+<!-- <%if @total_money < 0 %>
+<p><h1>YOU BROKE</h1></p>
+<%end%>
 <p> You have, <%= @total_money %> moneys </p>
 <p> You have made, <%= @trans_count %> transactions </p>
-<%= link_to 'New Exchange', new_exchange_path %>
+<%= link_to 'New Exchange', new_exchange_path %> -->
+
+<%if @broke %>
+<h1>YOUZ A BROKE MO </h1>
+<%end%>
+<p> You have, <%= @total_money %> moneys </p>
+<p> You have made, <%= @trans_count %> transactions </p>

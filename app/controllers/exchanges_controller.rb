@@ -9,13 +9,14 @@ class ExchangesController < ApplicationController
     @exchanges = Exchange.all
     @trans_count = Exchange.trans_count
     @total_money = Exchange.total_money
-
+    @broke = Exchange.broke
   end
 
   def dashboard
     @exchanges = Exchange.all
     @trans_count = Exchange.trans_count
     @total_money = Exchange.total_money
+    @broke = Exchange.broke
   end
 
   # GET /exchanges/1

@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Withdrawal:</strong>
-  <%= @exchange.withdrawal %>
-</p>
-
-<p>
-  <strong>Deposit:</strong>
-  <%= @exchange.deposit %>
+  <strong>Amount:</strong>
+  <%= @exchange.amount %>
 </p>
 
 <p>
   <strong>Collector:</strong>
   <%= @exchange.collector %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= phone_numberize(@exchange.phone_number) %>
 </p>
 
 <%= link_to 'Edit', edit_exchange_path(@exchange) %> |

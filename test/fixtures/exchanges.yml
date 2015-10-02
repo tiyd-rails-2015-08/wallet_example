@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 last_month:
-  amount: -100
-  collector: TSwift
+  amount: -1000
+  collector: Steam
   created_at: <%= Time.now - 1.month %>
 
 this_month:
-  amount: -50
-  collector: JDavid
+  amount: -1000
+  collector: Steam
   created_at: <%= Time.now %>
 
 more_this_month:
-  amount: 150
+  amount: -1500
   collector: DKim
   created_at: <%= Time.now %>

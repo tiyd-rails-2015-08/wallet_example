@@ -68,6 +68,6 @@ class ExchangesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def exchange_params
-      params.require(:exchange).permit(:withdrawal, :deposit, :collector, :amount)
+      params.require(:exchange).permit(:collector, :amount, :phone_number)
     end
 end

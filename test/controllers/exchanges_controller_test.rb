@@ -5,6 +5,13 @@ class ExchangesControllerTest < ActionController::TestCase
     @exchange = exchanges(:last_month)
   end
 
+  test "should get dashboard" do
+    get :dashboard
+    assert_response :success
+    assert_not_nil assigns(:broke)
+    assert response.body.include?("<body>")
+  end
+
   test "should get index" do
     get :index
     assert_response :success

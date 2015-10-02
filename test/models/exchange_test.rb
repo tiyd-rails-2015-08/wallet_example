@@ -2,8 +2,17 @@ require 'test_helper'
 
 class ExchangeTest < ActiveSupport::TestCase
   test "current month transaction count" do
-    assert_equal 2, Exchange.count_this_month
-    Exchange.create!(collector: "AMason", amount: -200)
-    assert_equal 3, Exchange.count_this_month
+    assert_difference("Exchange.count_this_month") do
+      Exchange.create!(collector: "AMason", amount: -200)
+    end
+    assert_no_difference("Exchange.count_this_month") do
+      Exchange.create!(collector: "AMason", amount: -200, created_at: Time.now - 1.month)
+    end
+  end
+
+  test "expensive company" do
+    expensive = "Steam"
+
+    assert_equal expensive, Exchange.expensive_company
   end
 end
